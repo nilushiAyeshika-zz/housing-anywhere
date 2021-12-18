@@ -27,7 +27,7 @@ export interface IGetCharacterDetails {
 
 export interface IGetCharacterDetailsSuccess {
   type: typeof GET_CHARACTER_DETAILS_SUCCESS
-  payload: { characterDetails: ICharacter | null; characterLocationDetails: any }
+  payload: { characterDetails: ICharacter | null; characterLocationDetails: any, characterEpisodeDetails: { id: number, name: string} }
 }
 
 export interface IGetCharacterDetailsError {

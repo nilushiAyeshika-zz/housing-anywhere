@@ -38,6 +38,16 @@ class CharactersApi {
 
     return axios.request(config as IConfig)
   }
+
+  getMultipleEpisodeDetails = async (episodes: number[]) => {
+    const config = {
+      headers: ApiHelper.createHeader(),
+      url: `${process.env.REACT_APP_CHARACTERS_SERVICES}/episode/${episodes}`,
+      method: 'get',
+    }
+
+    return axios.request(config as IConfig)
+  }
 }
 
 export default new CharactersApi()

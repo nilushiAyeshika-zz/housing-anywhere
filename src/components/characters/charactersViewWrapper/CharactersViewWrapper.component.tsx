@@ -1,8 +1,6 @@
 import { FC, useCallback, useEffect, useState } from 'react'
 import InfiniteScroll from 'react-infinite-scroll-component'
 import { useDispatch, useSelector } from 'react-redux'
-import { v4 as uuidv4 } from 'uuid'
-import classNames from 'classnames'
 import { useNavigate } from 'react-router-dom'
 
 import CharacterCard from '../characterCard/CharacterCard.component'

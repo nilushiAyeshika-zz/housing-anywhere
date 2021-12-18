@@ -7,5 +7,7 @@ export interface ICharactersDefaultState {
   total: number
   characterDetails: ICharacter | null
   characterLocationDetails: any
+  characterEpisodeDetails: { id: number, name: string } | null
+  isCharacterDetailsError: boolean
   isCharacterDetailsLoading: boolean
 }

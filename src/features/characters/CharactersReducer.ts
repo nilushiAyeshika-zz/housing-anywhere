@@ -16,7 +16,9 @@ const defaultState: ICharactersDefaultState = {
   total: 0,
   characterDetails: null,
   characterLocationDetails: null,
+  characterEpisodeDetails: null,
   isCharacterDetailsLoading: false,
+  isCharacterDetailsError: false,
 }
 
 const CharactersReducer = (
@@ -54,6 +56,8 @@ const CharactersReducer = (
         isCharacterDetailsLoading: true,
         characterDetails: null,
         characterLocationDetails: null,
+        characterEpisodeDetails: null,
+        isCharacterDetailsError: false,
       }
     case GET_CHARACTER_DETAILS_SUCCESS:
       return {
@@ -61,6 +65,8 @@ const CharactersReducer = (
         isCharacterDetailsLoading: false,
         characterDetails: action.payload.characterDetails,
         characterLocationDetails: action.payload.characterLocationDetails,
+        characterEpisodeDetails: action.payload.characterEpisodeDetails,
+        isCharacterDetailsError: false,
       }
     case GET_CHARACTER_DETAILS_ERROR:
       return {
@@ -68,6 +74,8 @@ const CharactersReducer = (
         isCharacterDetailsLoading: false,
         characterDetails: null,
         characterLocationDetails: null,
+        characterEpisodeDetails: null,
+        isCharacterDetailsError: true,
       }
     default:
       return state

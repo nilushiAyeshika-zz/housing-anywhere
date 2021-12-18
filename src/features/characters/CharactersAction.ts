@@ -18,7 +18,6 @@ export const getCharacters =
     try {
       dispatch({ type: GET_CHARACTERS })
       const charactersResponse = await CharactersApi.getCharacters(page)
-      // console.log(charactersResponse.data.results)
       const charactersData = charactersResponse.data
       const charactersResults = charactersData.results
       const nextToken = charactersData.info.next
@@ -46,22 +45,36 @@ export const getCharacters =
       dispatch({ type: GET_CHARACTER_DETAILS })
       const characterResponse = await CharactersApi.getCharacterDetails(id)
       const characterData = characterResponse.data;
-      // console.log(characterResponse.data)
 
-      if (characterResponse.data) {
+      if (characterData) {
         const characterLocationResponse = await CharactersApi.getCharacterLocationDetails(characterData.location.url)
         const characterLocationDesc = characterLocationResponse.data;
-        // console.log(characterLocationDesc)
+        const episodeIds: number[] = [];
+        characterData.episode?.forEach((item: string) => {
+          const lastSegment = item.split("/").pop();
+          episodeIds.push(parseInt(lastSegment as string));
+        })
+
+        const episodeResponse = await CharactersApi.getMultipleEpisodeDetails(episodeIds)
+        console.log(episodeResponse.data)
+        let episodeData = null
+        if (episodeResponse.data?.length > 0) {
+          episodeData = episodeResponse.data?.map((item: any) => ({ id: item.id, name: item.name }))
+        } else if (episodeResponse.data) {
+          episodeData = { id: episodeResponse.data.id, name: episodeResponse.data.name }
+        }
 
         dispatch({
           type: GET_CHARACTER_DETAILS_SUCCESS,
           payload: {
             characterDetails: characterData,
             characterLocationDetails: characterLocationDesc,
+            characterEpisodeDetails: episodeData,
           },
         })
       }
     } catch (e) {
+      console.log(e)
       dispatch({
         type: GET_CHARACTER_DETAILS_ERROR,
       })
