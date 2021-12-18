@@ -11,6 +11,7 @@ import { getCharacterDetails } from '../../../features/characters/CharactersActi
 import Text from '../../../components/core/text/Text.component'
 import { CharacterStatus } from '../../../constants/CharacterStatus'
 import Button from '../../../components/core/button/Button.component'
+import CharacterDetailsLoader from '../../../components/contectLoaders/characterDetailsLoader/CharacterDetailsLoader.component'
 
 import { appTheme } from '../../../theme/Theme'
 
@@ -22,10 +23,6 @@ const CharacterDetailsScreen: FC = () => {
 
   const { isCharacterDetailsLoading, characterDetails, characterLocationDetails, characterEpisodeDetails, isCharacterDetailsError } =
     useSelector((state: any) => state.characters)
-
-  console.log(characterDetails)
-  console.log(characterLocationDetails)
-  console.log(characterEpisodeDetails)
   
 
   const fetchCharacterDetails = () => {
@@ -40,7 +37,7 @@ const CharacterDetailsScreen: FC = () => {
 
   const renderCharacterDetails = () => (
     <Grid className="profile-details" direction="column" alignItems="center">
-      <Text color="typo-white" size="xl" margin="0 0 4rem 0">
+      <Text color="typo-white" size="xl" margin="0 0 4rem 0" textAlign="center">
         {characterDetails.name}
       </Text>
       <img src={characterDetails.image} alt="profile" />
@@ -133,7 +130,9 @@ const CharacterDetailsScreen: FC = () => {
   )
 
   const renderLoading = () => (
-    <>loading</>
+    <Grid className="loading-wrapper" justifyContent="center" alignItems="center">
+      <CharacterDetailsLoader />
+    </Grid>
   )
 
   const renderNoResults = () => (

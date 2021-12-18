@@ -11,6 +11,7 @@ const CharacterListScreen: FC = () => {
       justifyContent="center"
       backgroundColor={appTheme.colors.PRIMARY_BG}
       minHeight="100vh"
+      padding="0 2rem"
     >
       <CharactersViewWrapper />
     </Grid>

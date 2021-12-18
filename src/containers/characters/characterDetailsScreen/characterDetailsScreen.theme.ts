@@ -46,6 +46,17 @@ const CharactersDetailsScreenWrapper = styled.div`
     color: ${appTheme.colors.TYPOGRAPHY_LIGHT};
     padding-left: 2rem;
   }
+
+  @media(max-width: 500px) {
+    .profile-inner {
+      width: 100%;
+    }
+
+    .back-button {
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
 `
 
 export default CharactersDetailsScreenWrapper

@@ -18,7 +18,6 @@ const CharacterCard: FC<CharacterCardProps> = (props) => {
     profileImage,
     status,
     species,
-    origin,
     location,
     onClick,
     callbackValue,
@@ -66,14 +65,6 @@ const CharacterCard: FC<CharacterCardProps> = (props) => {
             {location}
           </Text>
         </Grid>
-        {/* <Grid margin="0 0 1rem 0" direction="column">
-          <Text color="typo-secondary" size="m" margin="0 0 0.5rem 0" >
-            Origin -
-          </Text>
-          <Text color="typo-middle-light" size="m">
-            {origin}
-          </Text>
-        </Grid> */}
         <Grid margin="0 0 1rem 0" direction="column" alignItems="flex-end">
           <Text color="typo-middle-light" size="m">
             Read More...
