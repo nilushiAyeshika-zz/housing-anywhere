@@ -2,6 +2,7 @@ import { FC, useCallback, useEffect, useState } from 'react'
 import InfiniteScroll from 'react-infinite-scroll-component'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
+import { v4 as uuidv4 } from 'uuid'
 
 import CharacterCard from '../characterCard/CharacterCard.component'
 import CharacterCardContentLoader from '../../contectLoaders/characterCardLoader/CharacterCardLoader.component'
@@ -57,10 +58,10 @@ const CharactersViewWrapper: FC<ICharactersView> = (props) => {
       pullDownToRefreshThreshold={50}
       data-test="infinite-wrapper"
     >
-      {characterList?.map((character: ICharacter) => (
+      {characterList?.map((character: ICharacter, index: number) => (
         <CharacterCard
           className="character-card"
-          key={character.id}
+          key={uuidv4()}
           id={character.id}
           name={character.name}
           status={character.status}
