@@ -7,17 +7,17 @@ const CharacterDetailsLoader = () => (
   <CharacterDetailsLoaderWrapper>
     <ContentLoader
       speed={2}
-      width={400}
-      height={600}
-      viewBox="0 0 400 600"
-      backgroundColor="rgb(79 81 86)"
-      foregroundColor="rgb(80 81 80)"
+      width={540}
+      height={700}
+      viewBox="0 0 540 700"
+      backgroundColor="#3b697e"
+      foregroundColor="#285b72"
     >
-      <rect x="47" y="5" rx="2" ry="2" width="306" height="17" />
-      <rect x="86" y="30" rx="2" ry="2" width="206" height="15" />
-      <rect x="2" y="103" rx="2" ry="2" width="400" height="400" />
-      <rect x="8" y="550" rx="0" ry="0" width="389" height="17" />
-      <rect x="10" y="578" rx="0" ry="0" width="296" height="20" />
+      <rect x="70" y="5" rx="10" ry="10" width="396" height="50" />
+      <rect x="2" y="103" rx="10" ry="10" width="530" height="400" />
+      <rect x="120" y="550" rx="10" ry="10" width="290" height="17" />
+      <rect x="8" y="600" rx="10" ry="10" width="190" height="17" />
+      <rect x="8" y="640" rx="10" ry="10" width="300" height="17" />
     </ContentLoader>
   </CharacterDetailsLoaderWrapper>
 )
