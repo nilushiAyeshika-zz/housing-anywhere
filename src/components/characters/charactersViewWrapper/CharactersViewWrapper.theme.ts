@@ -6,6 +6,10 @@ const CharactersViewWrap = styled.div`
   flex-wrap: wrap;
   width: 120.5rem;
 
+  .main-para {
+    width: 100%;
+  }
+
   .character-card {
     margin-right: 1.5rem;
     margin-bottom: 1.5rem;

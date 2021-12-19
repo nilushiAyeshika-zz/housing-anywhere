@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 export const CharacterCardLoaderWrapper = styled.div`
   display: flex;
-  width: 30rem;
+  width: 40rem;
   flex-direction: column;
   height: 38rem;
   border-radius: 2rem;

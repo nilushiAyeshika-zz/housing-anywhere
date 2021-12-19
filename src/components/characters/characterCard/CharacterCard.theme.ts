@@ -9,6 +9,31 @@ const CharacterCardWrapper = styled.div`
   border: 1px solid ${appTheme.colors.TYPOGRAPHY_MIDDLE_LIGHT};
   width: 39rem;
   border-radius: 1rem;
+  position: relative;
+
+  &:hover .overlay {
+    opacity: 1;
+  }
+
+  .overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+    transition: 0.5s ease;
+    background-color: rgba(0, 0, 0, 0.8);
+    border-radius: 2rem;
+    z-index: 99;
+
+    svg {
+      font-size: 4rem;
+      color: ${appTheme.colors.TYPOGRAPHY_LIGHT};
+    }
+  }
 
   .card-img-wrapper {
     position: relative;

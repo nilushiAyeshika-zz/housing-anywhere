@@ -1,6 +1,6 @@
 import { FC, useCallback } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCircle } from '@fortawesome/free-solid-svg-icons'
+import { faCircle, faList } from '@fortawesome/free-solid-svg-icons'
 import classNames from 'classnames'
 
 import { CharacterCardProps } from './CharacterCard.types'
@@ -69,6 +69,9 @@ const CharacterCard: FC<CharacterCardProps> = (props) => {
           <Text color="typo-middle-light" size="m">
             Read More...
           </Text>
+        </Grid>
+        <Grid className="overlay" justifyContent="center" alignItems="center">
+          <FontAwesomeIcon icon={faList} />
         </Grid>
       </Grid>
     </CharacterCardWrapper>

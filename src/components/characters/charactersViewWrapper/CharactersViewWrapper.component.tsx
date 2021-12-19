@@ -85,7 +85,7 @@ const CharactersViewWrapper: FC<ICharactersView> = (props) => {
 
   return (
     <CharactersViewWrap className={className} data-test="characters-view-wrap">
-      <Text color="typo-white" size="xl" margin="0 auto 4rem auto" textAlign="center">
+      <Text color="typo-white" size="xl" margin="0 auto 4rem auto" textAlign="center" className="main-para">
         The Rick and Morty Characters
       </Text>
       {characterList?.length > 0 && renderInfiniteWrapper()}
