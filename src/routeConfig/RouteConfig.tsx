@@ -8,7 +8,10 @@ const RouteConfig = () => {
   return (
     <Routes>
       <Route path="/" element={<CharactersListScreen />} />
-      <Route path={`${RouteHelper.CHARACTER_DESCRIPTION_PATH}/:characterId`} element={<CharacterDetailsScreen />} />
+      <Route
+        path={`${RouteHelper.CHARACTER_DESCRIPTION_PATH}/:characterId`}
+        element={<CharacterDetailsScreen />}
+      />
     </Routes>
   )
 }

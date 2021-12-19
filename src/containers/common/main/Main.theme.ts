@@ -7,7 +7,7 @@ const MainStyles = styled.div`
   display: flex;
   align-items: center;
   flex-direction: column;
-  background: ${appTheme.colors.PRIMARY_BG}
+  background: ${appTheme.colors.PRIMARY_BG};
 `
 
 export default MainStyles

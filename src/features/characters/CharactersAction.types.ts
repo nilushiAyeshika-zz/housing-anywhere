@@ -27,11 +27,21 @@ export interface IGetCharacterDetails {
 
 export interface IGetCharacterDetailsSuccess {
   type: typeof GET_CHARACTER_DETAILS_SUCCESS
-  payload: { characterDetails: ICharacter | null; characterLocationDetails: any, characterEpisodeDetails: { id: number, name: string} }
+  payload: {
+    characterDetails: ICharacter | null
+    characterLocationDetails: any
+    characterEpisodeDetails: { id: number; name: string }
+  }
 }
 
 export interface IGetCharacterDetailsError {
   type: typeof GET_CHARACTER_DETAILS_ERROR
 }
 
-export type CharactersDispatchTypes = IGetCharacters | IGetCharactersSuccess | IGetCharactersError | IGetCharacterDetails | IGetCharacterDetailsSuccess | IGetCharacterDetailsError
+export type CharactersDispatchTypes =
+  | IGetCharacters
+  | IGetCharactersSuccess
+  | IGetCharactersError
+  | IGetCharacterDetails
+  | IGetCharacterDetailsSuccess
+  | IGetCharacterDetailsError

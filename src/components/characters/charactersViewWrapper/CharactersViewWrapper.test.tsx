@@ -11,47 +11,42 @@ import { appTheme } from '../../../theme/Theme'
 
 const mockStore = configureMockStore([thunk])
 
-const characterDetailsObj = 
-  {
-      "id": 1,
-      "name": "Rick Sanchez",
-      "status": "Alive",
-      "species": "Human",
-      "type": "",
-      "gender": "Male",
-      "origin": {
-        "name": "Earth (C-137)",
-        "url": "https://rickandmortyapi.com/api/location/1"
-      },
-      "location": {
-        "name": "Citadel of Ricks",
-        "url": "https://rickandmortyapi.com/api/location/3"
-      },
-      "image": "https://rickandmortyapi.com/api/character/avatar/1.jpeg",
-      "episode": [
-        "https://rickandmortyapi.com/api/episode/1",
-      ]
-  }
+const characterDetailsObj = {
+  id: 1,
+  name: 'Rick Sanchez',
+  status: 'Alive',
+  species: 'Human',
+  type: '',
+  gender: 'Male',
+  origin: {
+    name: 'Earth (C-137)',
+    url: 'https://rickandmortyapi.com/api/location/1',
+  },
+  location: {
+    name: 'Citadel of Ricks',
+    url: 'https://rickandmortyapi.com/api/location/3',
+  },
+  image: 'https://rickandmortyapi.com/api/character/avatar/1.jpeg',
+  episode: ['https://rickandmortyapi.com/api/episode/1'],
+}
 
 const characterEpisodeDetailsArray = [
   {
-    "id": 1,
-    "name": "Pilot"
+    id: 1,
+    name: 'Pilot',
   },
   {
-    "id": 2,
-    "name": "Lawnmower Dog"
-  }
+    id: 2,
+    name: 'Lawnmower Dog',
+  },
 ]
 
 const characterLocationDetailsObj = {
-  "id": 3,
-  "name": "Citadel of Ricks",
-  "type": "Space station",
-  "dimension": "unknown",
-  "residents": [
-    "https://rickandmortyapi.com/api/character/8",
-  ]
+  id: 3,
+  name: 'Citadel of Ricks',
+  type: 'Space station',
+  dimension: 'unknown',
+  residents: ['https://rickandmortyapi.com/api/character/8'],
 }
 
 const characterListArray = [characterDetailsObj]
@@ -74,13 +69,13 @@ const defaultStoreState = {
 const customDataStoreState = {
   ...defaultStoreState,
   characters: {
-     ...defaultStoreState.characters,
-     characterList: characterListArray,
-     total: 1,
-     characterDetails: characterDetailsObj,
-     characterLocationDetails: characterLocationDetailsObj,
-     characterEpisodeDetails:characterEpisodeDetailsArray
-    },
+    ...defaultStoreState.characters,
+    characterList: characterListArray,
+    total: 1,
+    characterDetails: characterDetailsObj,
+    characterLocationDetails: characterLocationDetailsObj,
+    characterEpisodeDetails: characterEpisodeDetailsArray,
+  },
 }
 
 const setup = (props: any, defaultStore = {}) => {
@@ -90,7 +85,7 @@ const setup = (props: any, defaultStore = {}) => {
     <Provider store={store}>
       <ThemeProvider theme={appTheme}>
         <Router>
-          <CharactersViewWrapper {...setupProps}/>
+          <CharactersViewWrapper {...setupProps} />
         </Router>
       </ThemeProvider>
     </Provider>
@@ -112,7 +107,7 @@ describe('<CharactersViewWrapper />', () => {
     const component = findByTestAttr(wrapper, 'character-no-data-massage')
     expect(component.exists()).toBe(true)
   })
-  
+
   describe('for character data available', () => {
     beforeEach(() => {
       wrapper = setup(defaultProps, customDataStoreState)
@@ -120,11 +115,11 @@ describe('<CharactersViewWrapper />', () => {
     afterAll(() => {
       wrapper.unmount()
     })
-    
-  test('test character infinite wrapper initial load', () => {
-    const component = findByTestAttr(wrapper, 'infinite-wrapper')
-    expect(component.exists()).toBe(true)
-  })
+
+    test('test character infinite wrapper initial load', () => {
+      const component = findByTestAttr(wrapper, 'infinite-wrapper')
+      expect(component.exists()).toBe(true)
+    })
     test('test character details card', () => {
       const component = findByTestAttr(wrapper, 'character-card')
       expect(component.exists()).toBe(true)
@@ -133,6 +128,5 @@ describe('<CharactersViewWrapper />', () => {
       const component = findByTestAttr(wrapper, 'character-no-data-massage')
       expect(component.exists()).toBe(false)
     })
-    
   })
 })

@@ -30,15 +30,15 @@ const CharactersDetailsScreenWrapper = styled.div`
     margin-right: 0.5rem;
 
     &.alive {
-      color:  ${appTheme.colors.TYPOGRAPHY_ALIVE};
+      color: ${appTheme.colors.TYPOGRAPHY_ALIVE};
     }
 
     &.dead {
-      color:  ${appTheme.colors.TYPOGRAPHY_DEAD};
+      color: ${appTheme.colors.TYPOGRAPHY_DEAD};
     }
 
     &.unknown {
-      color:  ${appTheme.colors.TYPOGRAPHY_UNKNOWN};
+      color: ${appTheme.colors.TYPOGRAPHY_UNKNOWN};
     }
   }
 
@@ -47,7 +47,7 @@ const CharactersDetailsScreenWrapper = styled.div`
     padding-left: 2rem;
   }
 
-  @media(max-width: 500px) {
+  @media (max-width: 500px) {
     .profile-inner {
       width: 100%;
     }

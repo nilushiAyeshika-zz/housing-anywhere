@@ -13,8 +13,7 @@ import {
 import CharactersApi from '../../api/CharactersApi'
 
 export const getCharacters =
-  (page: number) =>
-  async (dispatch: Dispatch<CharactersDispatchTypes>) => {
+  (page: number) => async (dispatch: Dispatch<CharactersDispatchTypes>) => {
     try {
       dispatch({ type: GET_CHARACTERS })
       const charactersResponse = await CharactersApi.getCharacters(page)
@@ -23,14 +22,14 @@ export const getCharacters =
       const nextToken = charactersData.info.next
       const totalItems = charactersData.info.count
 
-        dispatch({
-          type: GET_CHARACTERS_SUCCESS,
-          payload: {
-            characterList: charactersResults,
-            cursor: nextToken,
-            total: totalItems,
-          },
-        })
+      dispatch({
+        type: GET_CHARACTERS_SUCCESS,
+        payload: {
+          characterList: charactersResults,
+          cursor: nextToken,
+          total: totalItems,
+        },
+      })
     } catch (e) {
       dispatch({
         type: GET_CHARACTERS_ERROR,
@@ -38,21 +37,22 @@ export const getCharacters =
     }
   }
 
-  export const getCharacterDetails =
-  (id: number) =>
-  async (dispatch: Dispatch<CharactersDispatchTypes>) => {
+export const getCharacterDetails =
+  (id: number) => async (dispatch: Dispatch<CharactersDispatchTypes>) => {
     try {
       dispatch({ type: GET_CHARACTER_DETAILS })
       const characterResponse = await CharactersApi.getCharacterDetails(id)
-      const characterData = characterResponse.data;
+      const characterData = characterResponse.data
 
       if (characterData) {
-        const characterLocationResponse = await CharactersApi.getCharacterLocationDetails(characterData.location.url)
-        const characterLocationDesc = characterLocationResponse.data;
-        const episodeIds: number[] = [];
+        const characterLocationResponse = await CharactersApi.getCharacterLocationDetails(
+          characterData.location.url
+        )
+        const characterLocationDesc = characterLocationResponse.data
+        const episodeIds: number[] = []
         characterData.episode?.forEach((item: string) => {
-          const lastSegment = item.split("/").pop();
-          episodeIds.push(parseInt(lastSegment as string));
+          const lastSegment = item.split('/').pop()
+          episodeIds.push(parseInt(lastSegment as string))
         })
 
         const episodeResponse = await CharactersApi.getMultipleEpisodeDetails(episodeIds)

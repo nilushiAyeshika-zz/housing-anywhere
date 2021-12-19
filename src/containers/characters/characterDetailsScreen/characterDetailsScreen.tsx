@@ -21,9 +21,13 @@ const CharacterDetailsScreen: FC = () => {
   const params = useParams()
   const { characterId } = params
 
-  const { isCharacterDetailsLoading, characterDetails, characterLocationDetails, characterEpisodeDetails, isCharacterDetailsError } =
-    useSelector((state: any) => state.characters)
-  
+  const {
+    isCharacterDetailsLoading,
+    characterDetails,
+    characterLocationDetails,
+    characterEpisodeDetails,
+    isCharacterDetailsError,
+  } = useSelector((state: any) => state.characters)
 
   const fetchCharacterDetails = () => {
     if (characterId) {
@@ -36,19 +40,38 @@ const CharacterDetailsScreen: FC = () => {
   }, [])
 
   const renderCharacterDetails = () => (
-    <Grid className="profile-details" direction="column" alignItems="center" data-test="character-details">
-      <Text color="typo-white" size="xl" margin="0 0 4rem 0" textAlign="center"  data-test="character-name">
+    <Grid
+      className="profile-details"
+      direction="column"
+      alignItems="center"
+      data-test="character-details"
+    >
+      <Text
+        color="typo-white"
+        size="xl"
+        margin="0 0 4rem 0"
+        textAlign="center"
+        data-test="character-name"
+      >
         {characterDetails.name}
       </Text>
-      <img src={characterDetails.image} alt="profile" data-test="character-image"/>
-      <Grid margin="4rem 0 0 0" alignItems="center" direction="column" justifyContent="center" className="profile-inner">
+      <img src={characterDetails.image} alt="profile" data-test="character-image" />
+      <Grid
+        margin="4rem 0 0 0"
+        alignItems="center"
+        direction="column"
+        justifyContent="center"
+        className="profile-inner"
+      >
         <Grid margin="0 0 5rem 0" justifyContent="center" alignItems="center">
           <FontAwesomeIcon
             icon={faCircle}
-            className={classNames("character-status",
-            { "alive": characterDetails.status === CharacterStatus.Alive },
-            { "dead": characterDetails.status === CharacterStatus.Dead },
-            { "unknown": characterDetails.status === CharacterStatus.Unknown })}
+            className={classNames(
+              'character-status',
+              { alive: characterDetails.status === CharacterStatus.Alive },
+              { dead: characterDetails.status === CharacterStatus.Dead },
+              { unknown: characterDetails.status === CharacterStatus.Unknown }
+            )}
             data-test="character-status-icon"
           />
           <Text color="typo-middle-light" size="m" data-test="character-status">
@@ -67,7 +90,7 @@ const CharacterDetailsScreen: FC = () => {
           </Text>
         </Grid>
         <Grid margin="0 0 2rem 0" direction="column" data-test="character-origin">
-          <Text color="typo-secondary" size="m" margin="0 0 0.5rem 0" >
+          <Text color="typo-secondary" size="m" margin="0 0 0.5rem 0">
             Origin -
           </Text>
           <Text color="typo-middle-light" size="m">
@@ -75,7 +98,7 @@ const CharacterDetailsScreen: FC = () => {
           </Text>
         </Grid>
         <Grid margin="0 0 2rem 0" direction="column" data-test="character-dimension">
-          <Text color="typo-secondary" size="m" margin="0 0 0.5rem 0" >
+          <Text color="typo-secondary" size="m" margin="0 0 0.5rem 0">
             Dimension -
           </Text>
           <Text color="typo-middle-light" size="m">
@@ -83,7 +106,7 @@ const CharacterDetailsScreen: FC = () => {
           </Text>
         </Grid>
         <Grid margin="0 0 2rem 0" direction="column" data-test="character-residents-count">
-          <Text color="typo-secondary" size="m" margin="0 0 0.5rem 0" >
+          <Text color="typo-secondary" size="m" margin="0 0 0.5rem 0">
             Amount of residence -
           </Text>
           <Text color="typo-middle-light" size="m">
@@ -91,27 +114,34 @@ const CharacterDetailsScreen: FC = () => {
           </Text>
         </Grid>
         <Grid margin="0 0 2rem 0" direction="column" data-test="character-type">
-          <Text color="typo-secondary" size="m" margin="0 0 0.5rem 0" >
+          <Text color="typo-secondary" size="m" margin="0 0 0.5rem 0">
             Type -
           </Text>
           <Text color="typo-middle-light" size="m">
             {characterLocationDetails.type}
           </Text>
         </Grid>
-        {characterEpisodeDetails?.length > 0 &&
+        {characterEpisodeDetails?.length > 0 && (
           <Grid margin="0 0 2rem 0" direction="column">
-            <Text color="typo-secondary" size="m" margin="0 0 0.5rem 0" data-test="character-chapter-name-item">
+            <Text
+              color="typo-secondary"
+              size="m"
+              margin="0 0 0.5rem 0"
+              data-test="character-chapter-name-item"
+            >
               Name of the chapters -
             </Text>
-              <ul className="chapter-list">
-                {characterEpisodeDetails?.map((item: any) => (
-                  <li key={item.id}>
-                    <Text color="typo-middle-light" size="m">{item.name}</Text>
-                  </li>
-                ))}
-              </ul>
+            <ul className="chapter-list">
+              {characterEpisodeDetails?.map((item: any) => (
+                <li key={item.id}>
+                  <Text color="typo-middle-light" size="m">
+                    {item.name}
+                  </Text>
+                </li>
+              ))}
+            </ul>
           </Grid>
-        }
+        )}
       </Grid>
     </Grid>
   )
@@ -133,7 +163,10 @@ const CharacterDetailsScreen: FC = () => {
       return renderLoading()
     } else if (!isCharacterDetailsLoading && characterDetails) {
       return renderCharacterDetails()
-    } else if ((!isCharacterDetailsLoading && !!characterDetails) || (!isCharacterDetailsLoading && isCharacterDetailsError)) {
+    } else if (
+      (!isCharacterDetailsLoading && !!characterDetails) ||
+      (!isCharacterDetailsLoading && isCharacterDetailsError)
+    ) {
       return renderNoResults()
     }
   }
@@ -144,10 +177,7 @@ const CharacterDetailsScreen: FC = () => {
 
   return (
     <CharactersDetailsScreenWrapper data-test="character-details-wrapper">
-      <Grid
-        justifyContent="center"
-        backgroundColor={appTheme.colors.PRIMARY_BG}
-      >
+      <Grid justifyContent="center" backgroundColor={appTheme.colors.PRIMARY_BG}>
         <Grid direction="column">
           <Button
             onClick={handleBackNavigation}

@@ -1,4 +1,4 @@
-import { ICharacter } from '../../containers/characters/Characters.types';
+import { ICharacter } from '../../containers/characters/Characters.types'
 
 export interface ICharactersDefaultState {
   characterList: ICharacter[]
@@ -7,7 +7,7 @@ export interface ICharactersDefaultState {
   total: number
   characterDetails: ICharacter | null
   characterLocationDetails: any
-  characterEpisodeDetails: { id: number, name: string } | null
+  characterEpisodeDetails: { id: number; name: string } | null
   isCharacterDetailsError: boolean
   isCharacterDetailsLoading: boolean
 }

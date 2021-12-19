@@ -28,7 +28,7 @@ const defaultProps = {
   callbackValue,
 }
 const setup = (props: any) => {
-  const setupProps  = { ...props }
+  const setupProps = { ...props }
   return mount(
     <Provider store={store}>
       <ThemeProvider theme={appTheme}>
@@ -41,7 +41,6 @@ const setup = (props: any) => {
 }
 
 describe('<CharacterCard />', () => {
-
   const wrapper = setup(defaultProps)
 
   test('test character card wrapper initial load', () => {
