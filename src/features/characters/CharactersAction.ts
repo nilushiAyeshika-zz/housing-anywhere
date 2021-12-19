@@ -56,12 +56,11 @@ export const getCharacters =
         })
 
         const episodeResponse = await CharactersApi.getMultipleEpisodeDetails(episodeIds)
-        console.log(episodeResponse.data)
         let episodeData = null
         if (episodeResponse.data?.length > 0) {
           episodeData = episodeResponse.data?.map((item: any) => ({ id: item.id, name: item.name }))
         } else if (episodeResponse.data) {
-          episodeData = { id: episodeResponse.data.id, name: episodeResponse.data.name }
+          episodeData = [{ id: episodeResponse.data.id, name: episodeResponse.data.name }]
         }
 
         dispatch({

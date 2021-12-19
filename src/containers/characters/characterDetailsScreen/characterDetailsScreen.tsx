@@ -112,20 +112,6 @@ const CharacterDetailsScreen: FC = () => {
               </ul>
           </Grid>
         }
-        <>
-          {characterEpisodeDetails && !characterEpisodeDetails?.length &&
-            <Grid margin="0 0 2rem 0" direction="column">
-              <Text color="typo-secondary" size="m" margin="0 0 0.5rem 0" >
-                Name of the chapters -
-              </Text>
-                <ul className="chapter-list">
-                  <li key={characterEpisodeDetails.id}>
-                    <Text color="typo-middle-light" size="m">{characterEpisodeDetails.name}</Text>
-                  </li>
-                </ul>
-            </Grid>
-          }
-        </>
       </Grid>
     </Grid>
   )
