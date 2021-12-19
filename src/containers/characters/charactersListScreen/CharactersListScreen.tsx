@@ -13,7 +13,7 @@ const CharacterListScreen: FC = () => {
       minHeight="100vh"
       padding="0 2rem"
     >
-      <CharactersViewWrapper />
+      <CharactersViewWrapper data-test="characters-view-wrapper"/>
     </Grid>
   )
 }

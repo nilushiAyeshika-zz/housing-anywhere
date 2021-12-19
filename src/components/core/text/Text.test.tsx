@@ -1,7 +1,7 @@
 import { shallow } from 'enzyme'
 
-import Text from './Text'
-import { findByTestAttr } from '../../../utils/test.utils'
+import Text from './Text.component'
+import { findByTestAttr } from '../../../utils/Test.utils'
 
 const className = 'className'
 const size = '12px'

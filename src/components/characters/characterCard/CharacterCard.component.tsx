@@ -31,11 +31,12 @@ const CharacterCard: FC<CharacterCardProps> = (props) => {
     <CharacterCardWrapper
       className={className}
       onClick={handleClick}
+      data-test="character-card-wrapper"
     >
-      <Grid className="card-img-wrapper">
+      <Grid className="card-img-wrapper"  data-test="character-image">
         <img src={profileImage || defaultImg} alt="profile" />
         <Grid className="card-header">
-          <Text color="typo-white" size="l" className="character-name">
+          <Text color="typo-white" size="l" className="character-name"  data-test="character-name">
             {name}
           </Text>
         </Grid>
@@ -49,15 +50,16 @@ const CharacterCard: FC<CharacterCardProps> = (props) => {
               { "alive": status === CharacterStatus.Alive },
               { "dead": status === CharacterStatus.Dead },
               { "unknown": status === CharacterStatus.Unknown })}
+              data-test="character-status-icon"
             />
-            <Text color="typo-middle-light" size="m">
+            <Text color="typo-middle-light" size="m" data-test="character-status">
               {status} -
             </Text>
-            <Text color="typo-middle-light" size="m">
+            <Text color="typo-middle-light" size="m" data-test="character-species">
               &nbsp;{species}
             </Text>
         </Grid>
-        <Grid margin="0 0 1rem 0" direction="column">
+        <Grid margin="0 0 1rem 0" direction="column"  data-test="character-location">
           <Text color="typo-secondary" size="m" margin="0 0 0.5rem 0">
             Location -
           </Text>
@@ -65,7 +67,7 @@ const CharacterCard: FC<CharacterCardProps> = (props) => {
             {location}
           </Text>
         </Grid>
-        <Grid margin="0 0 1rem 0" direction="column" alignItems="flex-end">
+        <Grid margin="0 0 1rem 0" direction="column" alignItems="flex-end"  data-test="character-read-more-option">
           <Text color="typo-middle-light" size="m">
             Read More...
           </Text>

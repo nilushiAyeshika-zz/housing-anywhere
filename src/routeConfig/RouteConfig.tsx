@@ -1,7 +1,7 @@
 import { Routes, Route } from 'react-router-dom'
 
 import CharactersListScreen from '../containers/characters/charactersListScreen/CharactersListScreen'
-import CharacterDetailsScreen from '../containers/characters/characterDetailsScreen/characterDetailsScreen'
+import CharacterDetailsScreen from '../containers/characters/characterDetailsScreen/CharacterDetailsScreen'
 import RouteHelper from '../helpers/RouteHelper'
 
 const RouteConfig = () => {

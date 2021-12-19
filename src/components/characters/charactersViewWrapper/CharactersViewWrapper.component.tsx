@@ -56,6 +56,7 @@ const CharactersViewWrapper: FC<ICharactersView> = (props) => {
       loader={renderLoadingView()}
       refreshFunction={() => null}
       pullDownToRefreshThreshold={50}
+      data-test="infinite-wrapper"
     >
       {characterList?.map((character: ICharacter) => (
         <CharacterCard
@@ -70,6 +71,7 @@ const CharactersViewWrapper: FC<ICharactersView> = (props) => {
           origin={character.origin?.name}
           callbackValue={character.id}
           onClick={handleCharacterDetails}
+          data-test="character-card"
         />
       ))}
     </InfiniteScroll>
@@ -82,13 +84,13 @@ const CharactersViewWrapper: FC<ICharactersView> = (props) => {
   }
 
   return (
-    <CharactersViewWrap className={className}>
+    <CharactersViewWrap className={className} data-test="characters-view-wrap">
       <Text color="typo-white" size="xl" margin="0 auto 4rem auto" textAlign="center">
         The Rick and Morty Characters
       </Text>
       {characterList?.length > 0 && renderInfiniteWrapper()}
       {characterList?.length === 0 && !isLoading && (
-        <Text color="typo-middle-light" size="l">
+        <Text color="typo-middle-light" size="l" data-test="character-no-data-massage">
           Sorry, No data to display!
         </Text>
       )}

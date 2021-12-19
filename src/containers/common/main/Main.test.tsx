@@ -6,7 +6,7 @@ import { ThemeProvider } from 'styled-components'
 import Main from './Main'
 import { store } from '../../../store'
 import { appTheme } from '../../../theme/Theme'
-import { findByTestAttr } from '../../../utils/test.utils'
+import { findByTestAttr } from '../../../utils/Test.utils'
 
 const setup = () => {
   return mount(

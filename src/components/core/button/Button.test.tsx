@@ -1,7 +1,7 @@
 import { shallow } from 'enzyme'
 
 import Button from './Button.component'
-import { findByTestAttr } from '../../../utils/test.utils'
+import { findByTestAttr } from '../../../utils/Test.utils'
 
 const className = 'className'
 const backgroundColor = '#ccc'

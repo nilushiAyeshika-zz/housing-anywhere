@@ -6,7 +6,7 @@ import { faCircle, faArrowLeft } from '@fortawesome/free-solid-svg-icons'
 import classNames from 'classnames'
 
 import Grid from '../../../components/layout/grid/Grid.component'
-import CharactersDetailsScreenWrapper from './characterDetailsScreen.theme'
+import CharactersDetailsScreenWrapper from './CharacterDetailsScreen.theme'
 import { getCharacterDetails } from '../../../features/characters/CharactersAction'
 import Text from '../../../components/core/text/Text.component'
 import { CharacterStatus } from '../../../constants/CharacterStatus'
@@ -36,11 +36,11 @@ const CharacterDetailsScreen: FC = () => {
   }, [])
 
   const renderCharacterDetails = () => (
-    <Grid className="profile-details" direction="column" alignItems="center">
-      <Text color="typo-white" size="xl" margin="0 0 4rem 0" textAlign="center">
+    <Grid className="profile-details" direction="column" alignItems="center" data-test="character-details">
+      <Text color="typo-white" size="xl" margin="0 0 4rem 0" textAlign="center"  data-test="character-name">
         {characterDetails.name}
       </Text>
-      <img src={characterDetails.image} alt="profile" />
+      <img src={characterDetails.image} alt="profile" data-test="character-image"/>
       <Grid margin="4rem 0 0 0" alignItems="center" direction="column" justifyContent="center" className="profile-inner">
         <Grid margin="0 0 5rem 0" justifyContent="center" alignItems="center">
           <FontAwesomeIcon
@@ -49,15 +49,16 @@ const CharacterDetailsScreen: FC = () => {
             { "alive": characterDetails.status === CharacterStatus.Alive },
             { "dead": characterDetails.status === CharacterStatus.Dead },
             { "unknown": characterDetails.status === CharacterStatus.Unknown })}
+            data-test="character-status-icon"
           />
-          <Text color="typo-middle-light" size="m">
+          <Text color="typo-middle-light" size="m" data-test="character-status">
             {characterDetails.status} -
           </Text>
-          <Text color="typo-middle-light" size="m">
+          <Text color="typo-middle-light" size="m" data-test="character-species">
             &nbsp;{characterDetails.species}
           </Text>
         </Grid>
-        <Grid margin="0 0 2rem 0" direction="column">
+        <Grid margin="0 0 2rem 0" direction="column" data-test="character-location">
           <Text color="typo-secondary" size="m" margin="0 0 0.5rem 0">
             Location -
           </Text>
@@ -65,7 +66,7 @@ const CharacterDetailsScreen: FC = () => {
             {characterDetails.location.name}
           </Text>
         </Grid>
-        <Grid margin="0 0 2rem 0" direction="column">
+        <Grid margin="0 0 2rem 0" direction="column" data-test="character-origin">
           <Text color="typo-secondary" size="m" margin="0 0 0.5rem 0" >
             Origin -
           </Text>
@@ -73,7 +74,7 @@ const CharacterDetailsScreen: FC = () => {
             {characterDetails.origin.name}
           </Text>
         </Grid>
-        <Grid margin="0 0 2rem 0" direction="column">
+        <Grid margin="0 0 2rem 0" direction="column" data-test="character-dimension">
           <Text color="typo-secondary" size="m" margin="0 0 0.5rem 0" >
             Dimension -
           </Text>
@@ -81,7 +82,7 @@ const CharacterDetailsScreen: FC = () => {
             {characterLocationDetails.dimension}
           </Text>
         </Grid>
-        <Grid margin="0 0 2rem 0" direction="column">
+        <Grid margin="0 0 2rem 0" direction="column" data-test="character-residents-count">
           <Text color="typo-secondary" size="m" margin="0 0 0.5rem 0" >
             Amount of residence -
           </Text>
@@ -89,7 +90,7 @@ const CharacterDetailsScreen: FC = () => {
             {characterLocationDetails.residents?.length}
           </Text>
         </Grid>
-        <Grid margin="0 0 2rem 0" direction="column">
+        <Grid margin="0 0 2rem 0" direction="column" data-test="character-type">
           <Text color="typo-secondary" size="m" margin="0 0 0.5rem 0" >
             Type -
           </Text>
@@ -99,7 +100,7 @@ const CharacterDetailsScreen: FC = () => {
         </Grid>
         {characterEpisodeDetails?.length > 0 &&
           <Grid margin="0 0 2rem 0" direction="column">
-            <Text color="typo-secondary" size="m" margin="0 0 0.5rem 0" >
+            <Text color="typo-secondary" size="m" margin="0 0 0.5rem 0" data-test="character-chapter-name-item">
               Name of the chapters -
             </Text>
               <ul className="chapter-list">
@@ -136,7 +137,7 @@ const CharacterDetailsScreen: FC = () => {
   )
 
   const renderNoResults = () => (
-    <Text color="typo-white" size="xl" margin="0 0 4rem 0">
+    <Text color="typo-white" size="xl" margin="0 0 4rem 0" data-test="no-character-found">
       Sorry, Character not found
     </Text>
   )
@@ -156,7 +157,7 @@ const CharacterDetailsScreen: FC = () => {
   }, [])
 
   return (
-    <CharactersDetailsScreenWrapper>
+    <CharactersDetailsScreenWrapper data-test="character-details-wrapper">
       <Grid
         justifyContent="center"
         backgroundColor={appTheme.colors.PRIMARY_BG}
@@ -167,7 +168,7 @@ const CharacterDetailsScreen: FC = () => {
             width="15rem"
             margin="0 0 2rem 0"
             className="back-button"
-            data-test="question-back-button"
+            data-test="character-details-back-button"
             startIcon={<FontAwesomeIcon icon={faArrowLeft} />}
           >
             <Text size="m" color="typo-white">
